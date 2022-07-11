@@ -1,6 +1,9 @@
 local M = {}
 
-M._options = {}
+M._options = {
+  base_url = "https://carbon.now.sh/",
+  theme = "seti",
+}
 
 local url_encode = function (str)
    str = string.gsub (str, "([^0-9a-zA-Z !'()*._~-])",
@@ -26,14 +29,9 @@ local open_url = function (url)
   vim.loop.spawn('open', {args = {url}})
 end
 
-local defaults = {
-  base_url = "https://carbon.now.sh/",
-  theme = "seti",
-}
-
 M.setup = function(opts)
   opts = opts or {}
-  M._options = vim.tbl_deep_extend("force", {}, defaults, opts)
+  M._options = vim.tbl_deep_extend("force", {}, M._options, opts)
 end
 
 M.capture = function()

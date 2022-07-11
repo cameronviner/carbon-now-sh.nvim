@@ -10,9 +10,6 @@ Using Plug:
 
 ## Usage
 
-Call the setup function in your `init.vim`/`init.lua`:
-
-`require("carbonnow").setup()`
 
 Select your text in visual mode and then run:
 
@@ -24,7 +21,7 @@ You can also create a keymap to call the function, for example:
 
 ## Options
 
-You can pass options into the setup function to overwrite the default config:
+Call the setup function in your `init.vim`/`init.lua` and pass in options to overwrite the default config:
 
 ```
 require("carbonnow").setup({
