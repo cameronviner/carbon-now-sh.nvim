@@ -25,10 +25,10 @@ Call the setup function in your `init.vim`/`init.lua` and pass in options to ove
 
 ```
 require("carbonnow").setup({
-  -- base_url: if you are running an internal instance or a local version you can overwrite the url here
+  -- base_url: If you are running an internal instance or a local version you can overwrite the url
   base_url = "https://carbon.now.sh/" -- This is the default value 
-  -- theme: Can be used to overwrite he default theme
-  theme = "seti" -- default value
+  -- theme: Can be used to overwrite the default theme
+  theme = "seti" -- This is the default value
 })
 ```
 
