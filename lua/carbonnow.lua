@@ -26,7 +26,30 @@ local build_url = function (code, lang)
 end
 
 local open_url = function (url)
-  vim.loop.spawn('open', {args = {url}})
+  local command
+  local command_args
+
+  -- open has been tested
+  -- start not tested
+  -- xdg-open not tested
+
+
+  if vim.fn.executable('open') == 1 then
+    command = 'open'
+    command_args = {args = {url}}
+  elseif vim.fn.executable('start') == 1 then
+    print('found start')
+    command = 'start'
+  elseif vim.fn.executable('xdg-open') == 1 then
+    print('found xdg-open')
+    command = 'xdg-open'
+  else
+    vim.api.nvim_err_writeln("Could not find executable 'open', 'start' or 'xdg-open'")
+    return
+  end
+
+  -- this will probably change based on command
+  vim.loop.spawn(command, command_args)
 end
 
 M.setup = function(opts)
