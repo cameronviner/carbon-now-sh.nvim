@@ -43,8 +43,8 @@ local open_url = function (url)
     return
   end
 
-  handle = vim.loop.spawn(command, command_args,  function()
-    handle:close()
+  loop_handle = vim.loop.spawn(command, command_args,  function()
+    loop_handle:close()
   end)
 end
 
