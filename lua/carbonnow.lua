@@ -29,27 +29,23 @@ local open_url = function (url)
   local command
   local command_args
 
-  -- open has been tested
-  -- start not tested
-  -- xdg-open not tested
-
-
   if vim.fn.executable('open') == 1 then
     command = 'open'
     command_args = {args = {url}}
   elseif vim.fn.executable('start') == 1 then
-    print('found start')
     command = 'start'
+    command_args = {args={'""', url}}
   elseif vim.fn.executable('xdg-open') == 1 then
-    print('found xdg-open')
     command = 'xdg-open'
+    command_args = {args = {url}}
   else
     vim.api.nvim_err_writeln("Could not find executable 'open', 'start' or 'xdg-open'")
     return
   end
 
-  -- this will probably change based on command
-  vim.loop.spawn(command, command_args)
+  handle = vim.loop.spawn(command, command_args,  function()
+    handle:close()
+  end)
 end
 
 M.setup = function(opts)
