@@ -26,7 +26,7 @@ local build_url = function(code, lang)
 	return M._options.base_url .. "?code=" .. url_encode(code) .. "&t=" .. M._options.theme .. "&l=" .. lang
 end
 
-local open_url = function(url)
+local open_url = function (url)
 	vim.loop.spawn("open", { args = { url } })
 end
 
